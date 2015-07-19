@@ -10,3 +10,12 @@ This is a straight forward MVC that follows the below flow, and is extendable on
                                      /¯    ¯\            /   /¯
                               [CSS (O)]    [JS (O)]     /_  /¯¯¯¯¯[ROUTER (R)]              
                                                     [USER (A,R)]
+
+
+
+## Handle Required Root Defines
+    define('FILEROOT','Include/');
+    define('COREROOT',FILEROOT.'Core/');
+    define('VIEWROOT',FILEROOT.'View/');
+    define('CSSROOT',FILEROOT.'CSS/');
+    define('JSROOT',FILEROOT.'JS/');
