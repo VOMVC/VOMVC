@@ -69,6 +69,6 @@ Here we will return the same Setup View for all pages using our AMVC View Class,
             'FavIcon' => '',
             
             // Create a Body Controller and connect it to any set of pages
-            'Body' => 'All Pages Will Output This Inside Body Element.'
+            'Body' => 'All Pages Will Output This Inside Body Element, Or Where Ever The {Body} Tag Is Located.'
         ]);
     });
