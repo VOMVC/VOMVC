@@ -21,7 +21,7 @@
   *	$UserForm = new Controller($HasPermissionTo['Do Something'],function($p){
   *		return 'User Form';
   *	});
-  */
+  */ 
 class Controller {
 	public $CSS = '';
 	public $JS = '';
