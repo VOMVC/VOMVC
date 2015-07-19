@@ -63,12 +63,12 @@ Here we will return the same Setup View for all pages using our AMVC View Class,
     echo new Page(AllPages,function($p) {
         return new View('Setup',[
             'Base' => URL,
-	    'Title' => 'AMVC: New Project',
-	    'Keywords' => 'axori,mvc',
-	    'Description' => 'This is a new project amvc description',
-  	    'FavIcon' => '',
-			
-	    // Create a Body Controller and connect it to any set of pages
-	    'Body' => 'All Pages Will Output This Inside Body Element.'
+            'Title' => 'AMVC: New Project',
+            'Keywords' => 'axori,mvc',
+            'Description' => 'This is a new project amvc description',
+            'FavIcon' => '',
+            
+            // Create a Body Controller and connect it to any set of pages
+            'Body' => 'All Pages Will Output This Inside Body Element.'
         ]);
     });
