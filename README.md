@@ -23,12 +23,12 @@ Lets walk through an index.php file using the AMVC
 
 ## 2. Handle Other Required Defines
     session_start();
-	  define('DateTimeZone','America/Los_Angeles'); date_default_timezone_set(DateTimeZone);
-	  define('ROOT', getcwd());
-	  define('PROJECT', str_replace('/index.php', '', $_SERVER['PHP_SELF']));
-	  define("URL", "http://".$_SERVER['HTTP_HOST'].PROJECT);
-	  define('EncryptionPassword','SierraBankruptcy Admin');
-	  define('EncryptionLength','256');
+    define('DateTimeZone','America/Los_Angeles'); date_default_timezone_set(DateTimeZone);
+    define('ROOT', getcwd());
+    define('PROJECT', str_replace('/index.php', '', $_SERVER['PHP_SELF']));
+    define("URL", "http://".$_SERVER['HTTP_HOST'].PROJECT);
+    define('EncryptionPassword','SierraBankruptcy Admin');
+    define('EncryptionLength','256');
 	  
 	  
 ## 3. Include the AMVC Core
@@ -37,14 +37,14 @@ Lets walk through an index.php file using the AMVC
     
 ## 4. Define our dynamic pages, 'URL Routing', p function returns true if the regexp is satisfied against PAGE define
     defines([
-  		'AllPages'	=> p('/^.*?$/'),
+        'AllPages'	=> p('/^.*?$/'),
   		
-  		'Index'		=> p('/^\/?$/'),
-  		'AboutUs'	=> p('/^about-(us|casey|chris)?\/?$/'),
+        'Index'		=> p('/^\/?$/'),
+        'AboutUs'	=> p('/^about-(us|casey|chris)?\/?$/'),
   		
-  		'PostPage'	=> p('/^post\/(stuff|something)?\/?$/'),
-  		'GetPage'	=> p('/^get\/(stuff|something)?\/?$/'),
-	  ]);
+        'PostPage'	=> p('/^post\/(stuff|something)?\/?$/'),
+        'GetPage'	=> p('/^get\/(stuff|something)?\/?$/'),
+    ]);
 	  
 	  
 ## 5. Setup our Page
@@ -52,5 +52,23 @@ Lets walk through an index.php file using the AMVC
 This will handle connecting all 'allowed' pages to this Page controller. In this example, we allow all pages to pass through.
 
     echo new Page(AllPages,function($p) {
-      return 'All Pages Will Output This.';
+        return 'All Pages Will Output This.';
+    });
+
+
+## 6. Return our Setup View
+
+Here we will return the same Setup View for all pages using our AMVC View Class, this allows the ability to easily copy the root setup of any html document over to other projects, and keep that setup file up to date and normalized across all project pages. From here you may choose to setup your across project template as well, but I advise against it, as that is what the next step is for.
+
+    echo new Page(AllPages,function($p) {
+        return new View('Setup',[
+            'Base' => URL,
+	    'Title' => 'AMVC: New Project',
+	    'Keywords' => 'axori,mvc',
+	    'Description' => 'This is a new project amvc description',
+  	    'FavIcon' => '',
+			
+	    // Create a Body Controller and connect it to any set of pages
+	    'Body' => '404 Page'
+        ]);
     });
