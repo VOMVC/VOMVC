@@ -12,15 +12,15 @@
   * @param string|closure	$Function This is the name of the function on the object to trigger, or a closure function
   *
   * @example Page Controller
-  *		define('AboutUs','/^about-us\/?$/')
-  *		$Page = new Controller(AboutUs,function($p) {
+  *	define('AboutUs','/^about-us\/?$/')
+  *	$Page = new Controller(AboutUs,function($p) {
   *		return 'About Us';
-  *		});
+  *	});
   * 
   * @example Permission Controller
-  *		$UserForm = new Controller($HasPermissionTo['Do Something'],function($p){
-  *			return 'User Form';
-  *		});
+  *	$UserForm = new Controller($HasPermissionTo['Do Something'],function($p){
+  *		return 'User Form';
+  *	});
   */
 class Controller {
 	public $CSS = '';
