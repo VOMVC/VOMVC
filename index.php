@@ -30,7 +30,6 @@
 		'GetPage'	=> p('/^get\/(stuff|something)?\/?$/'),
 	]);
 	
-	
 	/** Create our Project **/
 	echo new Page(AllPages,function($p) {
 		/* Handle any logic that needs to happen on all pages before ajax calls */
