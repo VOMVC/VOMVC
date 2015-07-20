@@ -21,7 +21,13 @@ Lets walk through an index.php file using the AMVC
     define('ROOT', getcwd());
     define('PROJECT', str_replace('/index.php', '', $_SERVER['PHP_SELF']));
     define("URL", "http://".$_SERVER['HTTP_HOST'].PROJECT);
-    define('EncryptionPassword','SierraBankruptcy Admin');
+    	
+    define('DBH','localhost');
+    define('DBN','DBName');
+    define('DBU','DBUser');
+    define('DBP','DBPassword');
+    
+    define('EncryptionPassword','AReallyGoodPassword');
     define('EncryptionLength','256');
 	  
 	  
