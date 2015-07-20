@@ -51,9 +51,9 @@ Lets walk through an index.php file using the AMVC
 
 This will handle connecting all 'allowed' pages to this Page controller. In this example, we allow all pages to pass through. The Page Controller, and all Controllers, expect the first parameter to be a true / false, this is the 'Trigger' which fires the closure function or function on the extended object (pass a string of the name of the function to the 2nd param instead of a closure). Our Page class simply extends a Controller, and outputs the Views CSS & JS files to the proper places in the Setup.html if they exist, that is it's only job. This means that the returned string to the Controller expects a {CSS} amd {JS} tag to be available.
 
-    echo new Page(AllPages,function($p) {
-        return 'All Pages Will Output This.';
-    });
+	echo new Page(AllPages,function($p) {
+		return 'All Pages Will Output This.';
+	});
 
 ## 6. Understand the View class
 
@@ -61,17 +61,17 @@ The View class is straight forward, there is a file located in the VIEWROOT fold
 
 The View Class, when turned into a string fires the __toString method on the class, which outputs the ->Template string on the View class
 
-    echo new View('Setup',[
-    	// Key => Val Pairs refer to a {Key} tag inside the View File, which is replaced with the Val.
-        'Base' => URL,
-        'Title' => 'AMVC: New Project',
-        'Keywords' => 'axori,mvc',
-        'Description' => 'This is a new project amvc description',
-        'FavIcon' => 'imgs/favicon.png',
-    
-        // Outputs a string to the {Body} tag located in the Setup.html, Setup.css, and Setup.js views.
-        'Body' => 'All Pages Will Output This Inside Body Element, Or Where Ever The {Body} Tag Is Located.'
-    ]);
+	echo new View('Setup',[
+	    	// Key => Val Pairs refer to a {Key} tag inside the View File, which is replaced with the Val.
+	        'Base' => URL,
+	        'Title' => 'AMVC: New Project',
+	        'Keywords' => 'axori,mvc',
+	        'Description' => 'This is a new project amvc description',
+	        'FavIcon' => 'imgs/favicon.png',
+	    
+	        // Outputs a string to the {Body} tag located in the Setup.html, Setup.css, and Setup.js views.
+	        'Body' => 'All Pages Will Output This Inside Body Element, Or Where Ever The {Body} Tag Is Located.'
+    	]);
     
 Note that the above will not output our CSS & JS files automatically, which makes you wonder why the above was mentioned?
 
@@ -81,18 +81,18 @@ Here we will return the same Setup View above for all pages using our AMVC View 
 
 Note that at this point, if the Setup.html file has a {CSS} and {JS} tags, then the Page class will automatically load in the CSSROOT.'Setup.css' and JSROOT.'Setup.js' files inline in the html.
 
-    echo new Page(AllPages,function($p) {
-        return new View('Setup',[
-            'Base' => URL,
-            'Title' => 'AMVC: New Project',
-            'Keywords' => 'axori,mvc',
-            'Description' => 'This is a new project amvc description',
-            'FavIcon' => '',
-            
-            // Create a Body Controller and connect it to any set of pages
-            'Body' => 'All Pages Will Output This Inside Body Element, Or Where Ever The {Body} Tag Is Located.'
-        ]);
-    });
+	    echo new Page(AllPages,function($p) {
+	        return new View('Setup',[
+	            'Base' => URL,
+	            'Title' => 'AMVC: New Project',
+	            'Keywords' => 'axori,mvc',
+	            'Description' => 'This is a new project amvc description',
+	            'FavIcon' => '',
+	            
+	            // Create a Body Controller and connect it to any set of pages
+	            'Body' => 'All Pages Will Output This Inside Body Element, Or Where Ever The {Body} Tag Is Located.'
+	        ]);
+	    });
 
 ## 8. What is a Controller? How do I use it?
 
@@ -110,13 +110,13 @@ The below example will only fire the body controller when we are Routed to an Ab
             
             // Create a Body Controller and connect it to any set of pages
             'Body' => new Controller(AboutUs,function($p) {
-            	/* Handle any logic that needs to happen on pages with this body controller */
-            	$Header = 'Header Data';
-            	$Body = 'Body Data';
-            	$Footer = 'Footer Data';
+		/* Handle any logic that needs to happen on pages with this body controller */
+		$Header = 'Header Data';
+		$Body = 'Body Data';
+		$Footer = 'Footer Data';
 		
-            	/* Return our Body view */
-            	return new View('Body',[
+		/* Return our Body view */
+		return new View('Body',[
 			'Header' => $Header,
 			'Body' => $Body,
 			'Footer' => $Footer,
