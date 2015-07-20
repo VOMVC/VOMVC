@@ -26,7 +26,7 @@ class View {
 	public $CSS = '';
 	public $JS = '';
 	
-	public function __construct($file, $data = null, $folder = VIEWROOT, $ext = 'html', $dev = true,$stag = '<!-- ',$etag = ' -->') {
+	public function __construct($file, $data = null, $folder = VIEWROOT, $ext = 'html', $dev = DEV,$stag = '<!-- ',$etag = ' -->') {
 		//global $Obfuscation;
 		if($folder == VIEWROOT) {
 			$this->CSS = new View($file,$data,CSSROOT,'css');
@@ -53,9 +53,9 @@ class View {
 		}
 		
 		$tpl = '';
-		//$tpl .= !(Dev_ && $Dev)?'':$stag.'START /'.$file.$etag;
+		$tpl .= !DEV?'':$stag.'START /'.$file.$etag;
 		$tpl .= file_get_contents($file);
-		//$tpl .= !(Dev_ && $Dev)?'':$stag.'END /'.$file.$etag;
+		$tpl .= !DEV?'':$stag.'END /'.$file.$etag;
 
 		$data = self::KeysToTags($data);
 		
@@ -72,8 +72,10 @@ class View {
 		$tpl = self::ViewReplaceTags($tpl,$data);
 
 		// Replace all Obfuscation tags in this view
-		//$tpl = ObfuscationReplaceTags($tpl);
-
+		if(class_exists('Obfuscation')) {	
+			$tpl = Obfuscation::ReplaceTags($tpl);
+		}
+		
 		$this->Template = $tpl;
 	}
 	
@@ -106,7 +108,7 @@ class View {
 				$page = str_replace($specials[0],$specials[1],$page);
 
 				if(defined($page)) {
-					$num = p(constant($page))?'{_Page_}':'';
+					$num = constant($page)?'{_Page_}':'';
 				} else {
 					$num = '';
 				}
