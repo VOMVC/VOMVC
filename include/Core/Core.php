@@ -178,5 +178,87 @@ function EncryptedPage($array) {
     return str_replace(array('%2F','%5C','%2B'),array('%252F','%255C','%252B'), urlencode(AesCtr::encrypt(json_encode($array), PASSWORD, ENCLENGTH)));
 }
 
+
+/**
+ * Turn a given string into a 0 index array with the string at index 0
+ * @param string $string Given a specific string
+ * @return array We return an array version of it, which is a 0 index'd array with the string
+ */
+function StringAsArray($string = null) {
+    if(is_null($string)) {
+        return null;
+    }
+    if(is_string($string)) {
+        return [$string];
+    }
+    return $string; // its not a string
+}
+
+/**
+ * This function turns a given Array into a String, it may be a little biased to the Underscore system tho.
+ * @param array $array Given the following array
+ * @return string returns a string representation of the array
+ */
+function ArrayAsString($array) {
+    $string = '';
+    if(is_array($array)) {
+        foreach($array as $k => $c) {
+            if(is_array($c)) {
+                $c = ArrayAsString($c);
+            }
+            $string .= $c;
+        }
+    }
+    return $string;
+}
+
+
+/**
+ *
+ * Merges the second array onto the first array with distinct data for each key.
+ * Essentially "replacing" the data at any recursive string from array 2, onto array 1.
+ * @param (array) $array1 // To Be Replaced
+ * @param (array) $array2 // Replacing With
+ */
+function array_merge_recursive_distinct($array1, $array2 = null) { /* array_merge_recursive_distinct */
+    // Start our '$merged' array as the initial $array1
+    $merged = $array1;
+
+    if(is_array($array1)) {
+        if(is_array($array2)) {
+            // Loop over $array2
+            foreach($array2 as $key => $val) {
+
+                // If $val or $array2[$key] is an array
+                if(is_array($array2[$key])) {
+                    $merged[$key] = (isset($merged[$key]) && is_array($merged[$key])) ? array_merge_recursive_distinct($merged[$key], $array2[$key]) : $array2[$key];
+                } else {
+                    $merged[$key] = $val;
+                }
+            }
+        }
+        	
+        if(is_object($array2)) {
+            $merged = $array2;
+        }
+    }
+
+    if(is_bool($array1)) {
+        	
+        if(is_bool($array2)) {
+            $merged = $array2;
+        }
+        	
+    }
+
+    if(is_null($array2)) {$merged = $array2;}
+    if(is_closure($array1) && is_closure($array2)) {$merged = $array2;}
+
+    return $merged;
+} /* End array_merge_recursive_distinct */
+
 function defines($a) {foreach($a as $k => $c) {if(!defined($k)) {define($k,$c);}}}
+
+/** Define TABLET, PHONE, & COMPUTER **/
+new DefineMobile();
 ?>
