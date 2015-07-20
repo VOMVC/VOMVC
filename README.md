@@ -385,4 +385,4 @@ Main AMVC Model
 
 Main AMVC View
 
-	https://github.com/axori/AMVC/blob/master/include/Core/View.php
+https://github.com/axori/AMVC/blob/master/include/Core/View.php
