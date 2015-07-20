@@ -354,32 +354,32 @@ Lets take a look at this in action..
 
 For Encryption & Encrypted Page Purposes
 
-	https://github.com/axori/AMVC/blob/master/include/Core/Aes.php
-	https://github.com/axori/AMVC/blob/master/include/Core/AesCtr.php
+https://github.com/axori/AMVC/blob/master/include/Core/Aes.php
+https://github.com/axori/AMVC/blob/master/include/Core/AesCtr.php
 
 ## Core.php
 
 Some Core Functionality Needed On Most If Not On All Projects
 
-	https://github.com/axori/AMVC/blob/master/include/Core/Core.php
+https://github.com/axori/AMVC/blob/master/include/Core/Core.php
 	
 ## Controller.php
 
 Main AMVC Controller
 
-	https://github.com/axori/AMVC/blob/master/include/Core/Controller.php
+https://github.com/axori/AMVC/blob/master/include/Core/Controller.php
 	
 ## Page.php
 
 Main AMVC Page Controller
 
-	https://github.com/axori/AMVC/blob/master/include/Core/Page.php
+https://github.com/axori/AMVC/blob/master/include/Core/Page.php
 	
 ## Model.php
 
 Main AMVC Model
 
-	https://github.com/axori/AMVC/blob/master/include/Core/Model.php
+https://github.com/axori/AMVC/blob/master/include/Core/Model.php
 	
 ## View.php
 
