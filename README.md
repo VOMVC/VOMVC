@@ -269,11 +269,12 @@ Lets take a look at this in action..
 		}
 		
 		/* Handle any logic that needs to happen on all pages at the Setup level */
+		$Title = 'AMVC: New Project';
 		
 		/* Return our Setup view */
 		return new View('Setup',[
 			'Base' => URL,
-			'Title' => 'AMVC: New Project',
+			'Title' => $Title,
 			'Keywords' => 'axori,mvc',
 			'Description' => 'This is a new project amvc description',
 			'FavIcon' => '',
