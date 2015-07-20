@@ -37,15 +37,6 @@
 		'GetPage'	=> p('/^get\/(stuff|something)?\/?$/'),
 	]);
 	
-	/* This class will create the globals $HasPermissionTo, and $NoPermissionTo */
-	/*new Model\Select\Permissions([
-		'GroupsTable' => 'Groups',
-		'GroupPermissionsTable' => 'GroupPermissions',
-		'PermissionsTable' => 'Permissions',
-		
-		'GroupID' => '-1',//!isset($User->LoggedInAs['GroupID'])?'-1':$User->LoggedInAs['GroupID'],
-	]);*/
-	
 	/** Handle our Project **/
 	echo new Page(AllPages,function($p) {
 		/* Handle any logic that needs to happen on all pages at the Setup level */
