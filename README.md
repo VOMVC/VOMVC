@@ -2,14 +2,7 @@
 
 This is a straight forward MVC that follows the below flow, and is extendable on all levels quite easily.
 
-
-                                             [  MODEL (O)  ]
-                                           /   /¯         \  ¯\
-           [RESULT (A,R), FILE (R,O)]¯¯¯¯¯/_  /¯[TPL (A)]-_\   \¯¯¯¯¯[ACTION (O), FILE (O), DATA (R,O)]
-                                    [VIEW (O)]<--------->[CONTROLLER (R)]
-                                     /¯    ¯\            /   /¯
-                              [CSS (O)]    [JS (O)]     /_  /¯¯¯¯¯[ROUTER (R)]              
-                                                    [USER (A,R)]
+![](https://docs.google.com/drawings/d/1vSqLWgyM9uoJrh39qsfDERNoREVq22UEq66Z4Qq66OI/pub?w=960&h=720)
 
 Lets walk through an index.php file using the AMVC
 
