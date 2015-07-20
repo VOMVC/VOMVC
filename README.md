@@ -110,13 +110,13 @@ The below example will only fire the body controller when we are Routed to an Ab
             
             // Create a Body Controller and connect it to any set of pages
             'Body' => new Controller(AboutUs,function($p) {
-		/* Handle any logic that needs to happen on pages with this body controller */
-		$Header = 'Header Data';
-		$Body = 'Body Data';
-		$Footer = 'Footer Data';
+            	/* Handle any logic that needs to happen on pages with this body controller */
+            	$Header = 'Header Data';
+            	$Body = 'Body Data';
+            	$Footer = 'Footer Data';
 		
-		/* Return our Body view */
-		return new View('Body',[
+            	/* Return our Body view */
+            	return new View('Body',[
 			'Header' => $Header,
 			'Body' => $Body,
 			'Footer' => $Footer,
@@ -195,6 +195,8 @@ Lets take a look at this in action..
 		'Name' => 'Casey Childers',
 	]);
 	
+	prent($Employee->Result);
+	
 	// Once this method is called, the $Employee variable then has the ->Result as well as a processed ->Template
 	echo $Employee->AddToView('Page/Employee');
 
@@ -240,3 +242,4 @@ Lets take a look at this in action..
 	});
 	
 	echo $Header;
+
