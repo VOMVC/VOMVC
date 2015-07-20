@@ -100,30 +100,30 @@ Just like in the above, where we use the Page Controller class which extends off
 
 The below example will only fire the body controller when we are Routed to an AboutUs page, which according to the above code would be about-us, about-casey, or about-chris pages. You can see the repetetive syntax starts to show Page Controller <- View <- KeyTags <- AnyValueOr Controller <- View <- KeyTags <- Value / Controller <- View <- Tags <- ...
 
-    echo new Page(AllPages,function($p) {
-        return new View('Setup',[
-            'Base' => URL,
-            'Title' => 'AMVC: New Project',
-            'Keywords' => 'axori,mvc',
-            'Description' => 'This is a new project amvc description',
-            'FavIcon' => '',
-            
-            // Create a Body Controller and connect it to any set of pages
-            'Body' => new Controller(AboutUs,function($p) {
-		/* Handle any logic that needs to happen on pages with this body controller */
-		$Header = 'Header Data';
-		$Body = 'Body Data';
-		$Footer = 'Footer Data';
-		
-		/* Return our Body view */
-		return new View('Body',[
-			'Header' => $Header,
-			'Body' => $Body,
-			'Footer' => $Footer,
+	echo new Page(AllPages,function($p) {
+		return new View('Setup',[
+			'Base' => URL,
+			'Title' => 'AMVC: New Project',
+			'Keywords' => 'axori,mvc',
+			'Description' => 'This is a new project amvc description',
+			'FavIcon' => '',
+			
+			// Create a Body Controller and connect it to any set of pages
+			'Body' => new Controller(AboutUs,function($p) {
+				/* Handle any logic that needs to happen on pages with this body controller */
+				$Header = 'Header Data';
+				$Body = 'Body Data';
+				$Footer = 'Footer Data';
+				
+				/* Return our Body view */
+				return new View('Body',[
+					'Header' => $Header,
+					'Body' => $Body,
+					'Footer' => $Footer,
+				]);
+			}),
 		]);
-	    }),
-        ]);
-    });
+	});
     
 ## 9. What are 'Controller Actions' aka the Action Switch? 
     
