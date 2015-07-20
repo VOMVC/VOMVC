@@ -243,3 +243,106 @@ Lets take a look at this in action..
 	
 	echo $Header;
 
+## 12. If we put this all together in a simple project, you can see this all working. I have gone ahead and also added a few Post / Get Ajax examples in the Page Controller Action Switch, which return any type of data before the setup view is reached.
+
+	echo new Page(AllPages,function($p) {
+		/* Handle any logic that needs to happen on all pages before ajax calls */
+		
+		/* Return Ajax Post / Get Pages BEFORE Setup, means Setup is Never Reached for Ajax Calls */
+		switch(PAGE) {
+			// Ajax Post Example
+			case PostPage:
+				$Employee = new Model\Select\Employee([
+					'Name' => $_POST['Name'],
+				]);
+									
+				return json_encode($Employee->Result);
+			break;
+			
+			// Ajax Get Example
+			case GetPage:
+				switch($p[1]) { // This can be off the page array or $_GET, or what ever...
+					case 'something': return 'data is something'; break;
+					case 'stuff': return 'data is stuff'; break;
+				}
+			break;
+		}
+		
+		/* Handle any logic that needs to happen on all pages at the Setup level */
+		
+		/* Return our Setup view */
+		return new View('Setup',[
+			'Base' => URL,
+			'Title' => 'AMVC: New Project',
+			'Keywords' => 'axori,mvc',
+			'Description' => 'This is a new project amvc description',
+			'FavIcon' => '',
+			
+			// Create a Body Controller and connect it to any set of pages
+			'Body' => new Controller(AllPages,function($p) {
+				/* Handle any logic that needs to happen on pages with this body controller */
+				$Header = 'Header Data';
+				$Footer = 'Footer Data';
+				
+				/* Switch based on Page, this is the Body Controller's possible 'Actions' */
+				switch(PAGE) {
+					case Index:
+						$Body = new Controller(Index,function($p) { // Index Controller
+							$Example = '... Hi!';
+						
+							// Return our main index view, using above data to output into the views
+							return new View('Page/Index',[
+								'Body' => $Example,
+							]);
+						});
+					break;
+					case AboutUs:
+						$Body = new Controller(AboutUs,function($p) { // About Us Controller
+							// Do some controller logic here, which is just processing the user events
+							$AboutWho = str_replace('about-','',$p[0]);
+							$AboutPage = '';
+							
+							// Switch based on the different available actions for this controller
+							switch($AboutWho) {
+								case 'casey':
+									// return a model to the controller
+									$Employee = new Model\Select\Employee([
+										'Name' => 'Casey Childers',
+									]);
+									
+									$AboutPage = $Employee->AddToView('Page/Employee');
+								break;
+								case 'chris':
+									$Employee = new Model\Select\Employee([
+										'Name' => 'Chris Childers',
+									]);
+									$AboutPage = $Employee->AddToView('Page/Employee');
+								break;
+								default:
+									$Employees = new Model\Select\Employees();
+									foreach($Employees->Result as $i => $Employee) {
+										$AboutPage .= new View('Page/Employees/Employee',$Employee);
+									}
+									
+									$AboutPage = new View('Page/AboutUs',[
+										'Employees' => $AboutPage
+									]);
+								break;
+							}
+
+							// Return a string, the controller will output it
+							return $AboutPage;
+						});
+						
+					break;
+				}
+				
+				/* Return our Body view */
+				return new View('Body',[
+					'Header' => $Header,
+					'Body' => $Body,
+					'Footer' => $Footer,
+				]);
+			}),
+		]);
+	});
