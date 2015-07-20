@@ -347,3 +347,42 @@ Lets take a look at this in action..
 			}),
 		]);
 	});
+
+# Core Files
+
+## Aes.php && AesCtr.php
+
+For Encryption & Encrypted Page Purposes
+
+	https://github.com/axori/AMVC/blob/master/include/Core/Aes.php
+	https://github.com/axori/AMVC/blob/master/include/Core/AesCtr.php
+
+## Core.php
+
+Some Core Functionality Needed On Most If Not On All Projects
+
+	https://github.com/axori/AMVC/blob/master/include/Core/Core.php
+	
+## Controller.php
+
+Main AMVC Controller
+
+	https://github.com/axori/AMVC/blob/master/include/Core/Controller.php
+	
+## Page.php
+
+Main AMVC Page Controller
+
+	https://github.com/axori/AMVC/blob/master/include/Core/Page.php
+	
+## Model.php
+
+Main AMVC Model
+
+	https://github.com/axori/AMVC/blob/master/include/Core/Model.php
+	
+## View.php
+
+Main AMVC View
+
+	https://github.com/axori/AMVC/blob/master/include/Core/View.php
