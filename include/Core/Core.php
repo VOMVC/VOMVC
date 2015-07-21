@@ -20,7 +20,6 @@ spl_autoload_register(function($Class) {
 	$File = FILEROOT . str_replace('\\', '/', $Class) . '.php';
 	
 	if(file_exists($File)) {
-		prent($File);
 		include_once($File);
 	}
 });
