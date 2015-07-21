@@ -1,6 +1,6 @@
 <?php
 	/** Handle Required Root Defines **/
-	define('FILEROOT','Include/');
+	define('FILEROOT','include/');
 	define('COREROOT',FILEROOT.'Core/');
 	define('VIEWROOT',FILEROOT.'View/');
 	define('CSSROOT',FILEROOT.'CSS/');
