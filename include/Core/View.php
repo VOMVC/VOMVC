@@ -29,9 +29,9 @@ class View {
 	public function __construct($file, $data = null, $folder = VIEWROOT, $ext = 'html', $dev = DEV,$stag = '<!-- ',$etag = ' -->') {
 		//global $Obfuscation;
 		if($folder == VIEWROOT) {
-			$this->CSS = new View($file,$data,CSSROOT,'css');
+			$this->CSS = new View($file,$data,CSSROOT,'css','/*','*/');
 			$this->CSS = !isset($this->CSS->Template)?'':$this->CSS->Template;
-			$this->JS = new View($file,$data,JSROOT,'js');
+			$this->JS = new View($file,$data,JSROOT,'js','/*','*/');
 			$this->JS = !isset($this->JS->Template)?'':$this->JS->Template;
 		}
 		
