@@ -15,9 +15,9 @@
 	define("URL", "http://".$_SERVER['HTTP_HOST'].PROJECT);
 	
 	define('DBH','localhost');
-	define('DBN','devposda_db');
-	define('DBU','devposda_db');
-	define('DBP','ListenDazesGrabsClefs88');
+	define('DBN','name');
+	define('DBU','user');
+	define('DBP','pass');
 	
 	define('EncryptionPassword','SierraBankruptcy Admin');
 	define('EncryptionLength','256');
