@@ -9,7 +9,7 @@
   * @version 1.0
   *
   * @param string   $file  The file to pull from the view folder
-  * @param string	$folder The view folder to use, default is VIEWROOT
+  * @param string	$folder The view folder to use, default is HTMLROOT
   * @param string	$ext The extension used inside the view folder
   * @param bool		$dev Enable comments or not on this view
   * @param string	$stag Start Comment Tag
@@ -26,19 +26,21 @@ class View {
 	public $CSS = '';
 	public $JS = '';
 	
-	public function __construct($file, $data = null, $folder = VIEWROOT, $ext = 'html', $dev = DEV,$stag = '<!-- ',$etag = ' -->') {
+	public function __construct($file, $data = null, $folder = HTMLROOT, $ext = 'html', $dev = DEV,$stag = '<!-- ',$etag = ' -->') {
 		//global $Obfuscation;
-		if($folder == VIEWROOT) {
-			$this->CSS = new View($file,$data,CSSROOT,'css','/*','*/');
+		if($folder == HTMLROOT) {
+			$this->CSS = new View($file,$data,CSSROOT,'css',DEV,'/*','*/');
 			$this->CSS = !isset($this->CSS->Template)?'':$this->CSS->Template;
-			$this->JS = new View($file,$data,JSROOT,'js','/*','*/');
+			$this->JS = new View($file,$data,JSROOT,'js',DEV,'/*','*/');
 			$this->JS = !isset($this->JS->Template)?'':$this->JS->Template;
 		}
 		
-		foreach($data as $k => $c) {
-			if(is_object($c)) {
-				$this->CSS .= $c->CSS;
-				$this->JS .= $c->JS;
+		if(is_array($data)) {
+			foreach($data as $k => $c) {
+				if(is_object($c)) {
+					$this->CSS .= $c->CSS;
+					$this->JS .= $c->JS;
+				}
 			}
 		}
 		
@@ -46,7 +48,7 @@ class View {
 		$file = "$folder$file.$ext";
 		 
 		if(!file_exists($file)) {
-			if($folder == VIEWROOT) {
+			if($folder == HTMLROOT) {
 				prent('ERROR: View File '.$file.' Does Not Exist.'); 
 			}
 			return false;
@@ -59,12 +61,13 @@ class View {
 
 		$data = self::KeysToTags($data);
 		
-		/*foreach($GLOBALS as $key => $val) {
+		foreach($GLOBALS as $key => $val) {
 			if(substr($key,0,5) == 'VIEW_') {
 				global $$key;
+				
 				$tpl = $$key->ReplaceTags($tpl,$file);
 			}
-		}*/
+		}
 		
 		$tpl = $this->ReplacePTags($tpl,$file);
 
