@@ -6,13 +6,37 @@
 	Provides           (string)$PAGE        - Control & View File Name
 **/
 
-// Index PAGE Controller
-new Controller(AboutUs,function($p) use(&$Page,$PAGE) { // <--- Note the use()
-	$Example = '... Index Page..';
+// AboutUs PAGE Controller
+new Controller(AboutUs,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use()
+	$AboutWho = str_replace('about-','',$p[0]);
+	
+	switch($AboutWho) {
+		case 'casey':
+			$Employee = new Model\Select\Employee([
+				'Name' => 'Casey Childers',
+			]);
+			
+			$BodyPage = $Employee->AddToView('Page/Employee');
+		break;
+		case 'chris':
+			$Employee = new Model\Select\Employee([
+				'Name' => 'Chris Childers',
+			]);
+			
+			$BodyPage = $Employee->AddToView('Page/Employee');
+		break;
+		default:
+			$Employees = new Model\Select\Employees();
+			
+			$EmplyoeeSection = '';
+			foreach($Employees->Result as $i => $Employee) {
+				$EmplyoeeSection .= new View('Page/AboutUs/Employee',$Employee);
+			}
 
-	// Return our main index view, using above data to output into the views
-	$Page = new View('Body/'.$PAGE,[
-		'Data' => $Example,
-	]);
+			$BodyPage = new View('Page/AboutUs',[
+				'Employees' => $EmplyoeeSection
+			]);
+		break;
+	}
 });
 ?>
