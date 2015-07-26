@@ -143,6 +143,11 @@ if($ENC) {
     $GLOBALS = array_merge_recursive_distinct($GLOBALS,isset($ENC['GLOBALS'])?$ENC['GLOBALS']:[]);
 }
 
+// normalize the slash at the end of PAGE
+if(substr($_p,-1,1) == '/') {
+	$_p = substr($_p,0,-1);
+}
+
 define("PAGE",($_p != '')?$_p:'/');unset($_p);	// Then define our normalized PAGE
 
 // If the session is not started, lets start it
