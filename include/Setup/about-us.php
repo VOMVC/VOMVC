@@ -16,14 +16,14 @@ new Controller(AboutUs,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use
 				'Name' => 'Casey Childers',
 			]);
 			
-			$BodyPage = $Employee->AddToView('Page/Employee');
+			$BodyPage = $Employee->AddToView('Page/about-employee');
 		break;
 		case 'chris':
 			$Employee = new Model\Select\Employee([
 				'Name' => 'Chris Childers',
 			]);
 			
-			$BodyPage = $Employee->AddToView('Page/Employee');
+			$BodyPage = $Employee->AddToView('Page/about-employee');
 		break;
 		default:
 			$Employees = new Model\Select\Employees();
@@ -33,7 +33,7 @@ new Controller(AboutUs,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use
 				$EmplyoeeSection .= new View('Page/AboutUs/Employee',$Employee);
 			}
 
-			$BodyPage = new View('Page/AboutUs',[
+			$BodyPage = new View('Page/about-us',[
 				'Employees' => $EmplyoeeSection
 			]);
 		break;
