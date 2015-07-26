@@ -32,7 +32,7 @@ echo new Controller\Setup(AllPages,function($p) {
 		// Create a Body Controller and connect it to any set of pages
 		'Body' => new Controller(AllPages,function($p) {
 		
-		  // Setup some cross body variables
+			// Setup some cross body variables
 			$Header = 'Default Data';
 			$Page = new View('Body/Page/404');
 			$Footer = new View('Body/Footer');
