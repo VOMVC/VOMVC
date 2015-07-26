@@ -7,7 +7,7 @@
 **/
 
 // Index PAGE Controller
-new Controller(Index,function($p) use(&$Page,$PAGE) { // <--- Note the use()
+new Controller(Index,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use()
 	$Example = '... Index Page..';
 
 	// Return our main index view, using above data to output into the views
