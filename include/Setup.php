@@ -37,6 +37,13 @@ echo new Controller\Setup(AllPages,function($p) {
 			$BodyPage = new View('Body/Page/404');
 			$BodyFooter = new View('Body/Footer');
 
+			// Handle dynamic page routing actions
+			switch(PAGE) {
+				case AboutUs: // about-us, about-casey, about-chris
+					$PAGE = 'about-us';	
+				break;
+			}
+
 			// Include our PAGE Controller
 			$PAGE = (PAGE == '/'?'index':PAGE);
 			include(FILEROOT.'Setup/'.$PAGE.'.php');
