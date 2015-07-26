@@ -8,10 +8,14 @@
 
 // Index PAGE Controller
 new Controller(Index,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use()
+	
+	// This is an example where the index page can define something, and the Setup controller can make it happen
+	define('SomeBoolean',true);
+	
 	$Example = '... Index Page..';
 
 	// Return our main index view, using above data to output into the views
-	$Page = new View('Body/'.$PAGE,[
+	$BodyPage = new View('Body/'.$PAGE,[
 		'Data' => $Example,
 	]);
 });
