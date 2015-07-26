@@ -33,12 +33,13 @@ echo new Controller\Setup(AllPages,function($p) {
 		'Body' => new Controller(AllPages,function($p) {
 		
 			// Setup some cross body variables
-			$Header = 'Default Data';
-			$Page = new View('Body/Page/404');
-			$Footer = new View('Body/Footer');
+			$BodyHeader = 'Default Data';
+			$BodyPage = new View('Body/Page/404');
+			$BodyFooter = new View('Body/Footer');
 
-			// Include our Page Controller
-			include(FILEROOT.'Setup/Page.php');
+			// Include our PAGE Controller
+			$PAGE = (PAGE == '/'?'index':PAGE);
+			include(FILEROOT.'Setup/'.$PAGE.'.php');
 			
 			// If these things are not defined, then define them as false
 			defined('SomeBoolean')?:define('SomeBoolean',false);
@@ -55,9 +56,9 @@ echo new Controller\Setup(AllPages,function($p) {
 		
 			/* Return our Page view */
 			return new View('Body',[
-				'Header' => $Header,
-				'Page' => $Page,
-				'Footer' => $Footer,
+				'Header' => $BodyHeader,
+				'Page' => $BodyPage,
+				'Footer' => $BodyFooter,
 			]);
 		}),
 	]);
