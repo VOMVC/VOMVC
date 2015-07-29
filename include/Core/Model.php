@@ -39,6 +39,7 @@ class Model extends PDO {
 	public $CSS = '';
 	public $JS = '';
 	public $Template = '';
+	public $Result = '';
 	
 	public function DB() {
 		try {
