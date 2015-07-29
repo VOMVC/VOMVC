@@ -19,7 +19,7 @@ class Setup extends \View {
 		
 		if(isset($files)) {
 			foreach($files as $file) {
-				if(stristr($file,'http')) {
+				if(stristr($file,'//')) {
 					$buffer .= '<link rel="stylesheet" type="text/css" href="'.$file.'" />'."\r\n\t\t";
 				} else {
 					$buffer .= '<link rel="stylesheet" type="text/css" href="'.URL.'/css/'.$file.'" />'."\r\n\t\t";
@@ -35,7 +35,7 @@ class Setup extends \View {
 		
 		if(isset($files)) {
 			foreach($files as $file) {
-				if(stristr($file,'http')) {
+				if(stristr($file,'//')) {
 					$buffer .= '<script language="JavaScript" type="text/javascript" src="'.$file.'"></script>'."\r\n\t\t";
 				} else {
 					$buffer .= '<script language="JavaScript" type="text/javascript" src="'.URL.'/js/'.$file.'"></script>'."\r\n\t\t";
