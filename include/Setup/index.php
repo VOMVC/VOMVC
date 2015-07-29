@@ -15,7 +15,7 @@ new Controller(Index,function($p) use(&$BodyPage,$PAGE) { // <--- Note the use()
 	$Example = '... Index Page..';
 
 	// Return our main index view, using above data to output into the views
-	$BodyPage = new View('Body/'.$PAGE,[
+	$BodyPage = new View('Body/Page/'.$PAGE,[
 		'Data' => $Example,
 	]);
 });
