@@ -21,12 +21,17 @@ echo new Controller\Setup(AllPages,function($p) {
 		
 		// Load our External CSS
 		'HTTPCSS' => [
-			'http://necolas.github.io/normalize.css/3.0.2/normalize.css',
+			'//necolas.github.io/normalize.css/3.0.2/normalize.css',
+			'//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css',
+			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',
+			'//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
 		],
 		
 		// Load our External JS
 		'HTTPJS' => [
-			'https://code.jquery.com/jquery-1.11.1.min.js',
+			'//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+			'//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js',
+			'//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'
 		],
 		
 		// Create a Body Controller and connect it to any set of pages
