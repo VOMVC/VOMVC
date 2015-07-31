@@ -179,7 +179,7 @@ function is_closure($t) {
  * @param string $array represents an array with the following "special keys": 'p'=>[],'session_id'=>'','GLOBALS'=>[], which will define how the encrypted page will turn out
  */
 function EncryptedPage($array) {
-    return str_replace(array('%2F','%5C','%2B'),array('%252F','%255C','%252B'), urlencode(AesCtr::encrypt(json_encode($array), PASSWORD, ENCLENGTH)));
+    return str_replace(array('%2F','%5C','%2B'),array('%252F','%255C','%252B'), urlencode(AesCtr::encrypt(json_encode($array), EncryptionPassword, EncryptionLength)));
 }
 
 
