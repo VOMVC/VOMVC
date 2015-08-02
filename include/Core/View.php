@@ -72,13 +72,7 @@ class View {
 		$tpl = $this->ReplacePTags($tpl,$file);
 
 		// Replace our normal tags
-		$c = 0;
-		//while($c == 0 && preg_match_all('/{{([\w]+) ?([^}]*?)(?:}}((?:[^{]*?|(?R)|{[\w]*?})*){{\/\1}})|{([\w]*?)}/s',$tpl,$matches) > 0) {
-		    //prent('test');
-		//preg_match_all('/{{([\w]+) ?([^}]*?)(?:}}((?:[^{]*?|(?R)|{[\w]*?})*){{\/\1}})|{([\w]*?)}/s',$tpl,$matches);
-		    $tpl = self::ViewReplaceTags($tpl,$data);
-		    //$c++;
-		//}
+		$tpl = self::ViewReplaceTags($tpl,$data);
 
 		// Replace all Obfuscation tags in this view
 		if(class_exists('Obfuscation')) {	
