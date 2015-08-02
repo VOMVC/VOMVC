@@ -72,7 +72,13 @@ class View {
 		$tpl = $this->ReplacePTags($tpl,$file);
 
 		// Replace our normal tags
-		$tpl = self::ViewReplaceTags($tpl,$data);
+		$c = 0;
+		//while($c == 0 && preg_match_all('/{{([\w]+) ?([^}]*?)(?:}}((?:[^{]*?|(?R)|{[\w]*?})*){{\/\1}})|{([\w]*?)}/s',$tpl,$matches) > 0) {
+		    //prent('test');
+		//preg_match_all('/{{([\w]+) ?([^}]*?)(?:}}((?:[^{]*?|(?R)|{[\w]*?})*){{\/\1}})|{([\w]*?)}/s',$tpl,$matches);
+		    $tpl = self::ViewReplaceTags($tpl,$data);
+		    //$c++;
+		//}
 
 		// Replace all Obfuscation tags in this view
 		if(class_exists('Obfuscation')) {	
@@ -169,14 +175,105 @@ class View {
 	}
 
 	static function ViewReplaceTags($tpl,$data) {
-		if($data) {
+	    // This will replace tags of the {Tag}{/Tag} kind which will loop over the given array and handle the inner template
+	    preg_match_all('/{{([\w]+) ?([^}]*?)(?:}}((?:[^{]*?|(?R)|{[\w]*?})*){{\/\1}})|{([\w]*?)}/s',$tpl,$matches); // |{[\w]*?}
+	    
+	     // If we have a match for a {Tag}{/Tag} then lets handle them first
+	     if(isset($matches[0][0])) {
+	     
+	         foreach($matches[0] as $matchI => $ToBeReplaced) {
+	             
+                 //$ToBeReplaced = isset($matches[0][0])?$matches[0][0]:$matches[0];
+                 $Tag = isset($matches[1][$matchI])?$matches[1][$matchI]:$matches[1];
+                 $Condition = isset($matches[2][$matchI])?$matches[2][$matchI]:$matches[2];
+                 $NewTpl = isset($matches[3][$matchI])?$matches[3][$matchI]:$matches[3];
+                  
+                 $TempTPL = '';
+                 
+                 if(is_string($ToBeReplaced)) {
+                    
+                     if($Tag == '') {
+                         $Tag = $ToBeReplaced;
+                     } else {
+                         $Tag = '{'.$Tag.'}';
+                     }
+                     
+                     if(isset($data[$Tag])) {
+                         $value = $data[$Tag];
+
+                         if(is_array($value)) {
+                             $TempTPL = '';
+                             $c = 0;
+                             if(count($value) != count($value, COUNT_RECURSIVE)) {
+                             
+                                 foreach($value as $TmpKey => $TmpVal) {
+                                     $TempNewTpl = ltrim($NewTpl," \t");
+                                      
+                                     if(is_int($TmpKey) && is_array($TmpVal)) {
+                                         $TmpKey = $Tag;
+                                         $TmpArray = $TmpVal;
+                                     } else {
+                                         $TmpKey = '{'.$TmpKey.'}';
+                                         $TmpArray = [$TmpKey => $TmpVal];
+                                     }
+                                      
+                                     if(is_string($TmpVal)) {
+                                         $TempNewTpl = str_replace($TmpKey,$TmpVal,$TempNewTpl);
+                                     }
+                             
+                                     if(is_string($TmpKey) && is_array($TmpVal)) {
+                                          
+                                         $TempNewTpl = self::ViewReplaceTags($TempNewTpl,View::KeysToTags($TmpArray));
+
+                                     }
+                                      
+                                     $TempTPL .= $TempNewTpl;
+                                     
+                                 }
+                                  
+                                 
+                             } else {
+                                 foreach($value as $i => $val) {
+                                     if(is_int($i)) {
+                                         $TempValue = $value;
+                                         
+                                         $TempNewTpl = '';
+                                         
+                                         $TempValue['_'] = $val;
+                                         $TempNewTpl = ltrim($NewTpl," \t");
+                                         
+                                        $TempValue = View::KeysToTags($TempValue);
+                                         
+                                        $Keys = array_keys($TempValue);
+                                        $Vals = array_values($TempValue);
+                                         
+                                        $TempTPL .= str_replace($Keys,$Vals,$TempNewTpl);
+                                     }
+                                     $c++;
+                                 }
+                             }
+                         } else {
+                             $TempTPL = (string)$value; // This forces objects like controllers to a string
+                         }
+                          
+                         $tpl = str_replace($ToBeReplaced, $TempTPL, $tpl);
+                     }
+                 }
+	         }
+	     }
+	    
+	    return $tpl;
+	}
+	
+	/*static function ViewReplaceTags($tpl,$data) {
+	    if($data) {
 			foreach($data AS $r => $k)
 				if($k !== true && $k !== false) {
-					$tpl = str_replace($r, $k, $tpl);
+					   $tpl = str_replace($r, $k, $tpl);
 				}
 		}
 		return $tpl;
-	}
+	}*/
 
 	static function KeysToTags($array=null) {
 		if(is_array($array)) {
