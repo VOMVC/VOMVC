@@ -88,18 +88,27 @@ set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontex
  * @author Casey Childers
 */
 function p($regexp,$return=null) {
+	global $p;
+    
 	if(is_string($regexp)) {
-    	try {
-            $pm = preg_match($regexp, PAGE, $m)?PAGE:null;
-        } catch (ErrorException $e) {
-            prent('Caught exception: ',  $e->getMessage(), "\n");
-        }
+	    	try {
+	            $pm = preg_match($regexp, PAGE, $m)?PAGE:null;
+	        } catch (ErrorException $e) {
+	            prent('Caught exception: ',  $e->getMessage(), "\n");
+	        }
 		
 	} else if(is_bool($regexp)) {
 		$m = $regexp;
 		$pm = $regexp?PAGE:null;
 	}
-
+	
+	// Allows us to now do $p['name'] for regexp matches that have a named group such as (?<name>some|data)
+	if(isset($m) && is_array($m) && !empty($m)) {
+	    foreach($m as $key => $match) {
+	        $p[$key] = $match;
+	    }
+	}
+	
 	return ($return && $pm)?is_closure($return)?$return($m):$return:$pm;
 }
 
