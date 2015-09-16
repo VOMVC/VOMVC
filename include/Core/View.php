@@ -1,10 +1,11 @@
 <?php
 /**
-  * Main AMVC View
+  * Main View
   *
   * Extend your views off this view.
   *
-  * @author  Casey Childers <casey@axori.com>
+  * @author  Casey Childers <childerskc@gmail.com
+  * @copyright 2015
   *
   * @version 1.0
   *
