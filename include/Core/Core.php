@@ -1,5 +1,31 @@
 <?php
-
+/**
+  * Main Core File
+  *
+  * Include this file in your index.php before using the MVC Class' This file is a Core File 
+  * I've created over the years that allows some quick handling of routing and other functions
+  * that my projects generally need to get started.
+  *
+  * @author  Casey Childers <childerskc@gmailcom>
+  * @copyright 2015
+  * 
+  * @version 1.0
+  *
+  * @param bool    			$IsRoute  Pass True to this param to trigger it. Use the defined Route's to route pages.
+  * @param string|closure	$Function This is the name of the function on the object to trigger, or a closure function
+  *
+  * @example Page Controller
+  *	define('AboutUs','/^about-us\/?$/')
+  *	$Page = new Controller(AboutUs,function($p) {
+  *		return 'About Us';
+  *	});
+  * 
+  * @example Permission Controller
+  *	$UserForm = new Controller($HasPermissionTo['Do Something'],function($p){
+  *		return 'User Form';
+  *	});
+  */ 
+  
 /** This function provides an easy way to see random debug data on the fly.
   */
 function prent($var,$return=false) {
