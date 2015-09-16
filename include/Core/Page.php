@@ -1,12 +1,13 @@
 <?php
 /**
-  * Main AMVC Page Controller
+  * Main Page Controller
   *
   * Extend your pages off this page controller. All this does is takes the CSS and JS
   * from across the Project Page, and outputs it onto the template at {CSS} and {JS}
   *
-  * @author  Casey Childers <casey@axori.com>
-  *
+  * @author  Casey Childers <childerskc@gmail.com>
+  * @copyright 2015
+  * 
   * @version 1.0
   *
   * @param bool    			$IsRoute  Pass True to this param to trigger it. Use the defined Route's to route pages.
