@@ -1,4 +1,4 @@
-# AMVC - Axori MVC
+# AMVC - Ax MVC
 
 This is a straight forward MVC that follows the below flow, and is extendable on all levels quite easily.
 
@@ -65,7 +65,7 @@ The View Class, when turned into a string fires the __toString method on the cla
 	    	// Key => Val Pairs refer to a {Key} tag inside the View File, which is replaced with the Val.
 	        'Base' => URL,
 	        'Title' => 'AMVC: New Project',
-	        'Keywords' => 'axori,mvc',
+	        'Keywords' => 'ax,mvc',
 	        'Description' => 'This is a new project amvc description',
 	        'FavIcon' => 'imgs/favicon.png',
 	    
@@ -85,7 +85,7 @@ Note that at this point, if the Setup.html file has a {CSS} and {JS} tags, then 
 	        return new View('Setup',[
 	            'Base' => URL,
 	            'Title' => 'AMVC: New Project',
-	            'Keywords' => 'axori,mvc',
+	            'Keywords' => 'ax,mvc',
 	            'Description' => 'This is a new project amvc description',
 	            'FavIcon' => '',
 	            
@@ -104,7 +104,7 @@ The below example will only fire the body controller when we are Routed to an Ab
 		return new View('Setup',[
 			'Base' => URL,
 			'Title' => 'AMVC: New Project',
-			'Keywords' => 'axori,mvc',
+			'Keywords' => 'ax,mvc',
 			'Description' => 'This is a new project amvc description',
 			'FavIcon' => '',
 			
@@ -136,7 +136,7 @@ Controller Actions, or the Action Switch simply refers to a switch on the Contro
 		return new View('Setup',[
 			'Base' => URL,
 			'Title' => 'AMVC: New Project',
-			'Keywords' => 'axori,mvc',
+			'Keywords' => 'ax,mvc',
 			'Description' => 'This is a new project amvc description',
 			'FavIcon' => '',
 			
@@ -275,7 +275,7 @@ Lets take a look at this in action..
 		return new View('Setup',[
 			'Base' => URL,
 			'Title' => $Title,
-			'Keywords' => 'axori,mvc',
+			'Keywords' => 'ax,mvc',
 			'Description' => 'This is a new project amvc description',
 			'FavIcon' => '',
 			
@@ -354,35 +354,35 @@ Lets take a look at this in action..
 
 For Encryption & Encrypted Page Purposes
 
-https://github.com/axori/AMVC/blob/master/include/Core/Aes.php
-https://github.com/axori/AMVC/blob/master/include/Core/AesCtr.php
+https://github.com/ax/AMVC/blob/master/include/Core/Aes.php
+https://github.com/ax/AMVC/blob/master/include/Core/AesCtr.php
 
 ## Core.php
 
 Some Core Functionality Needed On Most If Not On All Projects
 
-https://github.com/axori/AMVC/blob/master/include/Core/Core.php
+https://github.com/ax/AMVC/blob/master/include/Core/Core.php
 	
 ## Controller.php
 
 Main AMVC Controller
 
-https://github.com/axori/AMVC/blob/master/include/Core/Controller.php
+https://github.com/ax/AMVC/blob/master/include/Core/Controller.php
 	
 ## Page.php
 
 Main AMVC Page Controller
 
-https://github.com/axori/AMVC/blob/master/include/Core/Page.php
+https://github.com/ax/AMVC/blob/master/include/Core/Page.php
 	
 ## Model.php
 
 Main AMVC Model
 
-https://github.com/axori/AMVC/blob/master/include/Core/Model.php
+https://github.com/ax/AMVC/blob/master/include/Core/Model.php
 	
 ## View.php
 
 Main AMVC View
 
-https://github.com/axori/AMVC/blob/master/include/Core/View.php
+https://github.com/ax/AMVC/blob/master/include/Core/View.php
