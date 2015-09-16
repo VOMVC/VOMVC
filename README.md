@@ -2,8 +2,8 @@
 
 This is a straight forward MVC that follows the below flow, and is extendable on all levels quite easily.
 
-// https://docs.google.com/drawings/d/1vSqLWgyM9uoJrh39qsfDERNoREVq22UEq66Z4Qq66OI/pub?w=960&h=720
-// https://docs.google.com/drawings/d/1SVt-vS-P2gJy2zockFyWOkNPV2R_gwx8YlL1BDCheWU/pub?w=961&h=2923
+![](https://docs.google.com/drawings/d/1vSqLWgyM9uoJrh39qsfDERNoREVq22UEq66Z4Qq66OI/pub?w=960&h=720)
+![](https://docs.google.com/drawings/d/1SVt-vS-P2gJy2zockFyWOkNPV2R_gwx8YlL1BDCheWU/pub?w=961&h=2923)
 
 Lets walk through an index.php file using the AMVC
 
