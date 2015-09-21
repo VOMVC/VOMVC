@@ -367,24 +367,24 @@ https://github.com/VOMVC/VOMVC/blob/master/include/Core/Core.php
 	
 ## Controller.php
 
-Main AMVC Controller
+Main VOMVC Controller
 
 https://github.com/VOMVC/VOMVC/blob/master/include/Core/Controller.php
 	
 ## Page.php
 
-Main AMVC Page Controller
+Main VOMVC Page Controller
 
 https://github.com/VOMVC/VOMVC/blob/master/include/Core/Page.php
 	
 ## Model.php
 
-Main AMVC Model
+Main VOMVC Model
 
 https://github.com/VOMVC/VOMVC/blob/master/include/Core/Model.php
 	
 ## View.php
 
-Main AMVC View
+Main VOMVC View
 
 https://github.com/VOMVC/VOMVC/blob/master/include/Core/View.php
